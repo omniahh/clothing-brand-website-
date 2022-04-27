@@ -12,21 +12,21 @@ import Footer from '../components/Footer';
 
 
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   useEffect(() => {
     import("../node_modules/bootstrap/dist/js/bootstrap.min.js");
   }, []);
   
   return (
-     <SessionProvider session={pageProps.session}>
-  <div>
+     <SessionProvider session={session} refetchInterval={5 * 60}>
+
   
     <Navbar></Navbar>
 
   <Component {...pageProps} />
 
   <Footer></Footer>
-  </div>
+ 
    </SessionProvider>
   
   )

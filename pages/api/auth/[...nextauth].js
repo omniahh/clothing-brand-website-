@@ -1,16 +1,24 @@
 import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import { getToken } from "next-auth/jwt"
+import Auth0Provider from "next-auth/providers/auth0"
+ import GoogleProvider from "next-auth/providers/google"
 
 export default NextAuth({
   providers: [
-    Providers.Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
       authorizationUrl:
-        'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
+         'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
+    // authorization: {
+    //     params: {
+    //       prompt: "consent",
+    //       access_type: "offline",
+    //       response_type: "code"
+    //     }}
     }),
   ],
-  jwt: {
+  getToken: {
     encryption: true,
   },
   secret: process.env.SECRET,

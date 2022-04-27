@@ -1,4 +1,5 @@
 import React from 'react';
+import Home from '.';
 import btnStyle from '../styles/button.module.css'
 import styles from '../styles/Login.module.css'
 
@@ -19,7 +20,12 @@ const login = () => {
           <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
         </div>
         <button type="submit" className={btnStyle.myBtn}>Submit</button>
+        <div>
+        <Home></Home>
+        </div>
       </form>
+
+     
   
     );
 };

@@ -1,30 +1,38 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import landing from './landing'
+
+import Footer from '../components/Footer';
+import { style } from '@mui/system';
 
 
 export default function Home() {
-  const [session, loadingSession] = useSession();
+  const { data: session, status } = useSession()
 
-  if (loadingSession) {
-    return <p>Loading...</p>;
-  }
+
+
+  
 
   return (
-    <div className={styles.container}>
-      <Head>
+<div>
+ 
+ 
+      {/* <Head>
         <title>NextAuth Google Authentication</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <h1>Google Authentication with NextAuth </h1>
+      </Head> */}
+      <br></br>
+      <p > DO you have google account?</p>
 
       {!session && (
         <>
-          <button className={styles.primaryButton} onClick={() => signIn()}>
+      
+          <button className={styles.code} onClick={() => signIn()}>
             Sign In
           </button>
+       
         </>
       )}
 
@@ -47,6 +55,10 @@ export default function Home() {
           </button>
         </>
       )}
+      
+
     </div>
+     
+
   );
 }
